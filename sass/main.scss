@@ -1,0 +1,233 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap");
+@import "./_variables";
+@import "./mixins";
+* {
+  margin: 0;
+  box-sizing: content-box;
+  font-family: "raleway", sans-serif;
+}
+img {
+  max-width: 100%;
+  min-width: 12px;
+  display: block;
+  height: auto;
+  max-height: 100%;
+}
+%full-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.desktop-background {
+  background: url(../images/bg-desktop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 50vh;
+  top: 50vh;
+  @include for-size(desktop) {
+    z-index: 0;
+  }
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+  background: url(../images/bg-mobile.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @extend %full-center;
+  flex-direction: column;
+  @include for-size(desktop) {
+    flex-direction: row;
+    background: none;
+    background-color: $VeryDarkBlue;
+  }
+  .content-wrapper {
+    height: 60vh;
+    width: 88vw;
+    position: relative;
+    bottom: 20px;
+    @include for-size(tablet) {
+      height: 62vh;
+      width: 82vw;
+      bottom: 50px;
+    }
+    @include for-size(desktop) {
+      display: flex;
+      flex-direction: row;
+      height: 30vh;
+      width: 65vw;
+      bottom: 0;
+    }
+    .menu {
+      height: 52%;
+      margin-bottom: 5%;
+      background-color: $DarkBlue;
+      border-radius: 10px 110px 10px 10px;
+      @include for-size(desktop) {
+        height: 100%;
+        width: 38%;
+        margin-right: 3%;
+      }
+      @extend %full-center;
+      .menu-wrapper {
+        height: 58%;
+        width: 75%;
+        .menu--logo {
+          text-align: left;
+          @include for-size(tablet) {
+            img {
+              width: 44%;
+            }
+          }
+        }
+        .menu--options {
+          width: 72%;
+          margin-top: 2em;
+          display: flex;
+          justify-content: space-between;
+          @include for-size(tablet) {
+            margin-top: 3em;
+          }
+          .menu--options--item {
+            @extend %full-center;
+            background-color: $VeryDarkBlue;
+            border-radius: 10px;
+            flex-basis: auto;
+            padding: 12px 14px;
+            img {
+              width: 1.5em;
+            }
+            @include for-size(tablet) {
+              img {
+                width: 2.5em;
+              }
+              padding: 0.8em 0.9em;
+            }
+          }
+        }
+      }
+    }
+    .details {
+      height: 40%;
+      background-color: $DarkBlue;
+      border-radius: 10px;
+      @extend %full-center;
+      flex-direction: column;
+      @include for-size(desktop) {
+        height: 65%;
+        width: 59%;
+        align-self: flex-end;
+        text-align: left;
+      }
+      .details-wrapper {
+        width: 75%;
+        height: 50%;
+        color: #ffffff;
+        font-size: 0.8em;
+        font-weight: 500;
+        @include for-size(tablet) {
+          font-size: 1.4em;
+        }
+        @include for-size(desktop) {
+          font-size: 0.9em;
+          &::after {
+            content: "";
+            position: relative;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 1.6em 1.6em 0;
+            border-color: transparent #ffffff transparent transparent;
+            left: 96.5%;
+            bottom: 112%;
+            margin-left: 3px;
+          }
+        }
+        .details--bar {
+          width: 100%;
+          height: 0.85em;
+          border-radius: 12px;
+          background-color: rgba($VeryDarkBlue, 0.8);
+          margin-top: 1em;
+          @include for-size(desktop) {
+            margin-top: 1.3em;
+          }
+          .details--bar__consumed {
+            width: 81.5%;
+            height: inherit;
+            background: linear-gradient(
+              90deg,
+              hsl(6, 100%, 80%) 5%,
+              hsl(335, 100%, 65%) 100%
+            );
+            @extend %full-center;
+            border-radius: inherit;
+            &::after {
+              content: "";
+              display: inline-block;
+              position: relative;
+              left: calc(50% - 2.8%);
+              height: 85%;
+              width: 4.5%;
+              border-radius: 100%;
+              background-color: #ffffff;
+              @include for-size(desktop) {
+                width: 2.8%;
+                left: calc(50% - 2%);
+                height: 83%;
+              }
+            }
+          }
+          .details--bar--boundaries {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.4em;
+            @include for-size(tablet) {
+              font-size: 1em;
+            }
+          }
+        }
+      }
+      .details-storage-left {
+        display: flex;
+        position: absolute;
+        background-color: #ffffff;
+        border-radius: 10px;
+        color: #000000;
+        top: 86%;
+        padding: 10px 13px;
+        @extend %full-center;
+        @include for-size(desktop) {
+          top: inherit;
+          bottom: 56%;
+          left: 78.35%;
+          width: 13%;
+          height: 15.4%;
+          padding: 0.8em 0.7em;
+          border-radius: 8px 8px 0px 8px;
+          margin-right: 12px;
+        }
+        strong {
+          font-size: 2.2em;
+          margin: 0 0.2em;
+          @include for-size(tablet) {
+            font-size: 3.8em;
+          }
+        }
+        span {
+          font-size: 0.8em;
+          font-weight: 500;
+          color: $GrayisBlue;
+          padding-right: 0.2em;
+          @include for-size(tablet) {
+            font-size: 1.2em;
+          }
+        }
+      }
+    }
+  }
+}
