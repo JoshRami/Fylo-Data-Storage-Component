@@ -1,1 +1,8 @@
+<<<<<<< HEAD
 .DS_Store
+=======
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+>>>>>>> 2317af65dabe92d3f02cb92e3d84f5d77db7ea95
